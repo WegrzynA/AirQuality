@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AirQuality</string>
+
+    <!--main-->
+    <string name="main_noData">Proszę wybrać miasto</string>
+    <string name="main_choose_city">Wybierz miasto</string>
+
+</resources>
