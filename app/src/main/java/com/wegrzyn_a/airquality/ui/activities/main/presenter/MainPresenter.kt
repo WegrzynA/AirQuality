@@ -10,18 +10,22 @@ import io.reactivex.schedulers.Schedulers
 
 class MainPresenter(view: MainView, interactor: IMainInteractor): BasePresenter<MainView, IMainInteractor>(view,interactor) {
     override fun onCreate() {
+
+        view.onStartLoading()
+
         interactor
                 .getData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
 
-                    view.loadData(it)
+                    view.onLoadFinished(it)
                 },
                         {
+                            view.onLoadError(it.message ?: "loading error")
                             Log.d("MainPreseter", "error:" + it.message);
                         })
-//        view.loadData(mockEntries())
+//        view.onLoadFinished(mockEntries())
     }
 
     fun mockEntries() = listOf(Entry(1f,1f),Entry(2f,2f),Entry(3f,3f))

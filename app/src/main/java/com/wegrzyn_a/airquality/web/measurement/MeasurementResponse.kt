@@ -1,8 +1,8 @@
 package com.wegrzyn_a.airquality.web.measurement
 
-class MeasurementModel(
+class MeasurementResponse(
         val key: String,
-        val values: List<DataModel>
+        val values: List<MeasurementDataResponse>
 )
 
 

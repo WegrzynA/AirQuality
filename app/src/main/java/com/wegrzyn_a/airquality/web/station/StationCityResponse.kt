@@ -1,8 +1,8 @@
 package com.wegrzyn_a.airquality.web.station
 
-class CityModel(
+class StationCityResponse(
         val id: Long,
         val name: String,
-        val commune: CommuneModel
+        val commune: StationCityCommuneResponse
 )
 

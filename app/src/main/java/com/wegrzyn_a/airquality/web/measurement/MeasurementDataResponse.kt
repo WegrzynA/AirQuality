@@ -1,6 +1,6 @@
 package com.wegrzyn_a.airquality.web.measurement
 
-class DataModel(
+class MeasurementDataResponse(
         val date: String,
         val value: Double
 )
