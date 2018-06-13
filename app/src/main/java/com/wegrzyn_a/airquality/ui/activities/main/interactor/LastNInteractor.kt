@@ -4,8 +4,8 @@ import com.wegrzyn_a.airquality.ui.activities.main.model.MeasurementModel
 import com.wegrzyn_a.airquality.web.RestApi
 import io.reactivex.Single
 
-class MainInteractor : IMainInteractor {
-    override fun getData(): Single<List<MeasurementModel>> = getLastN(10, 0.01f)
+class LastNInteractor(val n: Int) : IMainInteractor {
+    override fun getData(): Single<List<MeasurementModel>> = getLastN(n, 0.01f)
 
     private fun getLastN(n: Int, min: Float) = RestApi.getMeasurement(92)
             .map {

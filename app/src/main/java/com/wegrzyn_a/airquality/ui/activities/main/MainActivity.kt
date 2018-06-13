@@ -9,7 +9,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.wegrzyn_a.airquality.R
-import com.wegrzyn_a.airquality.ui.activities.main.interactor.MainInteractor
+import com.wegrzyn_a.airquality.ui.activities.main.interactor.LastNInteractor
 import com.wegrzyn_a.airquality.ui.activities.main.model.MeasurementModel
 import com.wegrzyn_a.airquality.ui.activities.main.presenter.MainPresenter
 import com.wegrzyn_a.airquality.ui.activities.main.view.MainView
@@ -18,7 +18,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity: BaseActivity(), MainView {
-    override fun onCreatePresenter() = MainPresenter(this, MainInteractor())
+    override fun onCreatePresenter() = MainPresenter(this, createInteractor())
+
+    private fun createInteractor() = LastNInteractor(10)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
