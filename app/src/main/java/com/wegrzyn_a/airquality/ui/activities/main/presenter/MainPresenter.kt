@@ -1,14 +1,16 @@
-package com.wegrzyn_a.airquality.ui.activities.main
+package com.wegrzyn_a.airquality.ui.activities.main.presenter
 
 import android.util.Log
 import com.github.mikephil.charting.data.Entry
-import com.wegrzyn_a.airquality.ui.base.BasePresenter
+import com.wegrzyn_a.airquality.ui.activities.main.view.MainView
+import com.wegrzyn_a.airquality.ui.activities.main.interactor.IMainInteractor
+import com.wegrzyn_a.airquality.ui.base.mvp.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MainPresenter(val view: MainView): BasePresenter() {
+class MainPresenter(view: MainView, interactor: IMainInteractor): BasePresenter<MainView, IMainInteractor>(view,interactor) {
     override fun onCreate() {
-        MainInteractor()
+        interactor
                 .getData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,12 +1,16 @@
 package com.wegrzyn_a.airquality.ui.base
 
 import android.support.v7.app.AppCompatActivity
+import com.wegrzyn_a.airquality.ui.base.mvp.BaseInteractor
+import com.wegrzyn_a.airquality.ui.base.mvp.BasePresenter
+import com.wegrzyn_a.airquality.ui.base.mvp.BaseView
 
-abstract class BaseActivity: AppCompatActivity() {
+abstract class BaseActivity<T: BasePresenter<BaseView,BaseInteractor>>: AppCompatActivity() {
 
-    lateinit var presenter: BasePresenter
+//    lateinit var presenter: BasePresenter<BaseView,BaseInteractor>
+    lateinit var presenter: BasePresenter<BaseView,BaseInteractor>
 
-    abstract fun onCreatePresenter(): BasePresenter
+    abstract fun onCreatePresenter(): T
 
     override fun onResume() {
         super.onResume()
