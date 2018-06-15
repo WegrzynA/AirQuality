@@ -10,7 +10,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.wegrzyn_a.airquality.R
 import com.wegrzyn_a.airquality.ui.activities.main.interactor.LastNInteractor
-import com.wegrzyn_a.airquality.ui.activities.main.model.MeasurementModel
+import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementEntity
 import com.wegrzyn_a.airquality.ui.activities.main.presenter.MainPresenter
 import com.wegrzyn_a.airquality.ui.activities.main.view.MainView
 import com.wegrzyn_a.airquality.ui.base.BaseActivity
@@ -27,22 +27,16 @@ class MainActivity: BaseActivity(), MainView {
         setContentView(R.layout.activity_main)
     }
 
-    override fun onLoadFinished(entries: List<MeasurementModel>) {
+    override fun onLoadFinished(entries: List<MeasurementEntity>) {
         mainProgress.visibility = View.GONE
         mainContent.visibility = View.VISIBLE
 
         loadToChart(entries)
     }
 
-    private fun loadToChart(entries: List<MeasurementModel>) {
-        val dataSet = LineDataSet(entries.map { Entry(it.index.toFloat(), it.value) }, "Label"); // add entries to dataset
-
-        dataSet.setColor(R.color.colorPrimary)
-        dataSet.setValueTextColor(R.color.colorAccent)
-
-        val lineData = LineData(dataSet)
-        mainChart.setData(lineData)
-        mainChart.invalidate()
+    private fun loadToChart(entries: List<MeasurementEntity>) {
+        val adapter = ChartAdapter(entries)
+        mainChart.setAdapter(adapter)
     }
 
     override fun onStartLoading() {
@@ -54,10 +48,4 @@ class MainActivity: BaseActivity(), MainView {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
-    fun configureChart(mChart: LineChart){
-        val xAxis = mChart.getXAxis()
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
-        xAxis.setValueFormatter(MyXAxisValueFormatter())
-//        xAxis.setLabelsToSkip(0)
-    }
 }
