@@ -1,6 +1,7 @@
 package com.wegrzyn_a.airquality.ui.activities.main.interactor
 
 import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementEntity
+import com.wegrzyn_a.airquality.ui.utils.DateUtils
 import com.wegrzyn_a.airquality.web.RestApi
 import io.reactivex.Single
 
@@ -16,7 +17,7 @@ class LastNInteractor(val n: Int) : IMainInteractor {
                         .mapIndexed { index, dataModel ->
                             val value = dataModel.value.toFloat()
                             val label = dataModel.date
-                            MeasurementEntity(index, value, label)
+                            MeasurementEntity(index, value, DateUtils.parseWebDate(label))
                         }
             }
 }
