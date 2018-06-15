@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity: BaseActivity(), MainView {
     override fun onCreatePresenter() = MainPresenter(this, createInteractor())
 
-    private fun createInteractor() = LastNInteractor(10)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,11 +32,6 @@ class MainActivity: BaseActivity(), MainView {
         loadToChart(entries)
     }
 
-    private fun loadToChart(entries: List<MeasurementEntity>) {
-        val adapter = ChartAdapter(entries)
-        mainChart.setAdapter(adapter)
-    }
-
     override fun onStartLoading() {
         mainProgress.visibility = View.VISIBLE
         mainContent.visibility = View.GONE
@@ -48,4 +41,10 @@ class MainActivity: BaseActivity(), MainView {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
 
+    private fun createInteractor() = LastNInteractor(10)
+
+    private fun loadToChart(entries: List<MeasurementEntity>) {
+        val adapter = ChartAdapter(entries)
+        mainChart.setAdapter(adapter)
+    }
 }

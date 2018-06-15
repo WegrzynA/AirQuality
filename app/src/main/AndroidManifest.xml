@@ -12,8 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.wegrzyn_a.airquality.ui.activities.main.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:name="com.wegrzyn_a.airquality.ui.activities.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
