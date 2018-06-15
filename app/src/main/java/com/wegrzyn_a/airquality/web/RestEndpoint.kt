@@ -9,7 +9,7 @@ import retrofit2.http.Path
 interface RestEndpoint {
 
     @GET("station/findAll")
-    fun getStationList(): Single<List<StationResponse>>
+    fun getStationList(): Single<List<StationResponse>?>
 
     @GET("data/getData/{id}")
     fun getMeasurement(@Path("id")id: Long): Single<MeasurementResponse>

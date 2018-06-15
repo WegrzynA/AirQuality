@@ -1,14 +1,15 @@
 package com.wegrzyn_a.airquality.ui.activities.main.interactor
 
 import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementEntity
+import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementStationEntity
 import com.wegrzyn_a.airquality.ui.utils.DateUtils
 import com.wegrzyn_a.airquality.web.RestApi
 import io.reactivex.Single
 
-class LastNInteractor(val n: Int) : IMainInteractor {
-    override fun getData(): Single<List<MeasurementEntity>> = getLastN(n, 0.01f)
+class LastNMeasurementsInteractor(val n: Int) : MeasurementsInteractor {
+    override fun getData(station: MeasurementStationEntity): Single<List<MeasurementEntity>> = getLastN(n, 0.01f)
 
-    private fun getLastN(n: Int, min: Float) = RestApi.getMeasurement(92)
+    private fun getLastN(sensorId: Long, n: Int, min: Float) = RestApi.getMeasurement(sensorId)
             .map {
                 it.values
                         .reversed()

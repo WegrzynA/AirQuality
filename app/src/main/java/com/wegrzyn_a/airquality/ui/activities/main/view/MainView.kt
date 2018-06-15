@@ -7,4 +7,6 @@ interface MainView: BaseView {
     fun onStartLoading()
     fun onLoadFinished(entries: List<MeasurementEntity>)
     fun onLoadError(message: String)
+    fun init()
+    fun startStationListActivity()
 }
