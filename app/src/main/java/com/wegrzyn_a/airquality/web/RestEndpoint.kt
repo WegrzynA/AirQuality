@@ -1,6 +1,7 @@
 package com.wegrzyn_a.airquality.web
 
 import com.wegrzyn_a.airquality.web.measurement.MeasurementResponse
+import com.wegrzyn_a.airquality.web.sensor.SensorResponse
 import com.wegrzyn_a.airquality.web.station.StationResponse
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -10,6 +11,9 @@ interface RestEndpoint {
 
     @GET("station/findAll")
     fun getStationList(): Single<List<StationResponse>?>
+
+    @GET("station/sensors/{id}")
+    fun getSensorList(@Path("id") stationId: Long): Single<List<SensorResponse>?>
 
     @GET("data/getData/{id}")
     fun getMeasurement(@Path("id")id: Long): Single<MeasurementResponse>

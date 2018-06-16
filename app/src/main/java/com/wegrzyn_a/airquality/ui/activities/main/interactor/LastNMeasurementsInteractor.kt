@@ -7,18 +7,30 @@ import com.wegrzyn_a.airquality.web.RestApi
 import io.reactivex.Single
 
 class LastNMeasurementsInteractor(val n: Int) : MeasurementsInteractor {
-    override fun getData(station: MeasurementStationEntity): Single<List<MeasurementEntity>> = getLastN(n, 0.01f)
+    override fun getData(station: MeasurementStationEntity): Single<List<MeasurementEntity>> = getLastN(station, n, 0.01f)
 
-    private fun getLastN(sensorId: Long, n: Int, min: Float) = RestApi.getMeasurement(sensorId)
-            .map {
-                it.values
-                        .reversed()
-                        .filterIndexed { index, measurementDataResponse -> index < n }
-                        .filter { it.value > min }
-                        .mapIndexed { index, dataModel ->
-                            val value = dataModel.value.toFloat()
-                            val label = dataModel.date
-                            MeasurementEntity(index, value, DateUtils.parseWebDate(label))
+    private fun getLastN(station: MeasurementStationEntity, n: Int, min: Float) =
+            RestApi
+                    .getSensorList(station.id)
+                    .map {
+                        val pm_10_sensor = it.find {
+                            it.param.paramCode.equals("PM10")
                         }
-            }
+                        if (pm_10_sensor != null) pm_10_sensor else throw NoSensorException()
+                    }
+                    .flatMap {
+                        RestApi.getMeasurement(it.id)
+                                .map {
+                                    it.values
+                                            .reversed()
+                                            .filterIndexed { index, measurementDataResponse -> index < n }
+                                            .filter { it.value > min }
+                                            .mapIndexed { index, dataModel ->
+                                                val value = dataModel.value.toFloat()
+                                                val label = dataModel.date
+                                                MeasurementEntity(index, value, DateUtils.parseWebDate(label))
+                                            }
+                                }
+                    }
+
 }

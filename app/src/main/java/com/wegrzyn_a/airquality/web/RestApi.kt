@@ -21,6 +21,8 @@ object RestApi {
 
     fun getStationList() = restEndpoint.getStationList()
 
+    fun getSensorList(stationId: Long) = restEndpoint.getSensorList(stationId)
+
     fun getMeasurement(id: Long) = restEndpoint.getMeasurement(id)
 
 }

@@ -2,9 +2,8 @@ package com.wegrzyn_a.airquality.ui.activities.main.presenter
 
 import android.util.Log
 import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementStationEntity
-import com.wegrzyn_a.airquality.ui.activities.main.view.MainView
 import com.wegrzyn_a.airquality.ui.activities.main.interactor.MeasurementsInteractor
-import com.wegrzyn_a.airquality.ui.activities.station_list.IStationResult
+import com.wegrzyn_a.airquality.ui.activities.main.view.MainView
 import com.wegrzyn_a.airquality.ui.base.mvp.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -30,7 +29,7 @@ class MainPresenter(view: MainView, interactor: MeasurementsInteractor) : BasePr
 
     private fun loadData(station: MeasurementStationEntity) {
         interactor
-                .getData()
+                .getData(station)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
