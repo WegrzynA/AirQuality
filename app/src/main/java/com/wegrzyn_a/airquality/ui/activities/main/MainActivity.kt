@@ -57,6 +57,7 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
     }
 
     override fun onLoadError(message: String) {
+        mainProgress.visibility = View.GONE
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 

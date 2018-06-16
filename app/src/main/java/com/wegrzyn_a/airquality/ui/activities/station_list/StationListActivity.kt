@@ -49,6 +49,7 @@ class StationListActivity : BaseActivity<StationListPresenter>(), StationListVie
     }
 
     override fun onLoadError(message: String) {
+        stationListProgress.visibility = View.GONE
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
     }
 
