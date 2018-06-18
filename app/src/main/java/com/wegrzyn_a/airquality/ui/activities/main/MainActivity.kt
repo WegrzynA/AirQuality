@@ -10,6 +10,7 @@ import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementEntity
 import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementStationEntity
 import com.wegrzyn_a.airquality.ui.activities.main.interactor.LastNMeasurementsInteractor
 import com.wegrzyn_a.airquality.ui.activities.main.presenter.MainPresenter
+import com.wegrzyn_a.airquality.ui.activities.main.view.ChartAdapter
 import com.wegrzyn_a.airquality.ui.activities.main.view.MainView
 import com.wegrzyn_a.airquality.ui.activities.station_list.IStationResult
 import com.wegrzyn_a.airquality.ui.activities.station_list.StationListActivity

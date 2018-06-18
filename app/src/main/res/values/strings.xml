@@ -4,5 +4,7 @@
     <!--main-->
     <string name="main_noData">Proszę wybrać miasto</string>
     <string name="main_choose_city">Wybierz miasto</string>
+    <string name="item_station_city">city</string>
+    <string name="item_station_province">province</string>
 
 </resources>

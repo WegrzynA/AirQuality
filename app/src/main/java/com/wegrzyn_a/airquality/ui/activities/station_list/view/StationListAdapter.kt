@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.wegrzyn_a.airquality.R
 import com.wegrzyn_a.airquality.ui.activities.station_list.entity.StationEntity
 import kotlinx.android.synthetic.main.item_station.view.*
@@ -20,8 +21,8 @@ class StationListAdapter(val clickListener: (StationEntity) -> Unit): RecyclerVi
 
         item?.let {
             holder.view.setOnClickListener { clickListener.invoke(item) }
-            holder.city.text = it.city
-            holder.province.text = it.province
+            holder.city?.text = it.city
+            holder.province?.text = it.province
         }
     }
 
@@ -35,7 +36,7 @@ class StationListAdapter(val clickListener: (StationEntity) -> Unit): RecyclerVi
     }
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
-        val city = view.city
-        val province = view.province
+        val city: TextView? = view.city
+        val province: TextView? = view.province
     }
 }

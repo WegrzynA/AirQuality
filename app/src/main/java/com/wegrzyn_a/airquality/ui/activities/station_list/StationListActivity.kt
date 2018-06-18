@@ -56,6 +56,7 @@ class StationListActivity : BaseActivity<StationListPresenter>(), StationListVie
     override fun closeWithResult(item: StationParcel) {
         intent.putExtra(RESULT_STATION,item)
         setResult(Activity.RESULT_OK,intent)
+        onBackPressed()
     }
 
     private fun createInteractor() = StationListInteractor()

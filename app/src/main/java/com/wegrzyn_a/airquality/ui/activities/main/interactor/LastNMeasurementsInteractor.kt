@@ -14,10 +14,10 @@ class LastNMeasurementsInteractor(val n: Int) : MeasurementsInteractor {
             RestApi
                     .getSensorList(station.id)
                     .map {
-                        val pm_10_sensor = it.find {
+                        val sensor = it.find {
                             it.param.paramCode.equals("PM10")
                         }
-                        if (pm_10_sensor != null) pm_10_sensor else throw NoSensorException()
+                        if (sensor != null) sensor else throw NoSensorException()
                     }
                     .flatMap {
                         RestApi.getMeasurement(it.id)

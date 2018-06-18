@@ -24,13 +24,13 @@
             android:id="@+id/city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="city" />
+            android:text="@string/item_station_city" />
 
         <TextView
             android:id="@+id/province"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="province" />
+            android:text="@string/item_station_province" />
 
     </LinearLayout>
 </LinearLayout>

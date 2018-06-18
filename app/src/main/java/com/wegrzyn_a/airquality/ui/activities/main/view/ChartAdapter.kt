@@ -1,4 +1,4 @@
-package com.wegrzyn_a.airquality.ui.activities.main
+package com.wegrzyn_a.airquality.ui.activities.main.view
 
 import com.github.mikephil.charting.data.Entry
 import com.wegrzyn_a.airquality.ui.activities.main.entity.MeasurementEntity
