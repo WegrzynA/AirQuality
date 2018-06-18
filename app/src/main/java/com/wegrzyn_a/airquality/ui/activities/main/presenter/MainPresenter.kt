@@ -37,7 +37,7 @@ class MainPresenter(view: MainView, interactor: MeasurementsInteractor) : BasePr
                 },
                         {
                             view.onLoadError(it.message ?: "loading error")
-                            Log.d("MainPreseter", "error:" + it.message);
+                            Log.d("MainPreseter", "error:" + it.message)
                         })
     }
 

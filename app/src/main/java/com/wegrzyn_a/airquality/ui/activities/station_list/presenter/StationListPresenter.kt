@@ -26,7 +26,7 @@ class StationListPresenter(view: StationListView, interactor: IStationListIntera
                         {
                             view.onLoadError(it.message ?: "loading error")
                             Log.e("StationListPresenter","error",it)
-                            Log.d("StationListPreseter", "error:" + it.message);
+                            Log.d("StationListPreseter", "error:" + it.message)
                         })
     }
 

@@ -37,8 +37,8 @@ class CustomLineChart: LineChart {
     private fun setXLabels(labels: List<String>) {
         val xAxisLabels = labels
 
-        val xAxis = getXAxis()
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
+        val xAxis = xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.setDrawGridLines(false)
         xAxis.setValueFormatter({ value, axis -> xAxisLabels.get(value.toInt()) })
     }
