@@ -18,4 +18,6 @@ object DateUtils {
     }
 
     fun formatTime(date: Date): String = HH_MM?.format(date) ?: "HH:mm"
+
+    fun parseTime(time: String): Date? = HH_MM?.parse(time)
 }
