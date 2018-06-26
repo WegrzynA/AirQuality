@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             tools:ignore="NestedWeights" />
 
-        <com.wegrzyn_a.airquality.ui.views.CustomLineChart
+        <com.awegrzyn.airquality.ui.views.CustomLineChart
             android:id="@+id/mainChart"
             android:layout_weight="1"
             android:layout_width="match_parent"

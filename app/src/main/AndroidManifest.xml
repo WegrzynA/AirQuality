@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wegrzyn_a.airquality">
+    package="com.awegrzyn.airquality">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,13 +12,13 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.wegrzyn_a.airquality.ui.activities.main.MainActivity">
+            android:name="com.awegrzyn.airquality.ui.activities.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.station_list.StationListActivity" />
+        <activity android:name="com.awegrzyn.airquality.ui.activities.station_list.StationListActivity" />
 
     </application>
 </manifest>
